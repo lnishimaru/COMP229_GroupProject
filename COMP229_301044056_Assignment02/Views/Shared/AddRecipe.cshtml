@@ -1,0 +1,70 @@
+﻿@model InsertPageViewModel
+<form id="form1" asp-action="InsertPage"
+      asp-controller="Base" method="post">
+    <table id="insertTable">
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Name">Recipe:</label></td>
+            <td class="tdIngr"><input asp-for="RecipeVM.Name" /></td>
+            <td class="tdIngr"><input type="hidden" asp-for="RecipeVM.ID" /></td>
+        </tr>
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Category">Category:</label></td>
+            <td class="tdIngr">
+                <select input asp-for="RecipeVM.Category" class="tdIngr">
+                    <option>Select Category</option>
+                    <option>Breakfast</option>
+                    <option>Appetizers</option>
+                    <option>Entree</option>
+                    <option>Desserts</option>
+                    <option>Beverages</option>
+                    <option>Snacks</option>
+                </select>
+             </td>
+        </tr>
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Cuisine">Cuisine:</label></td>
+            <td class="tdIngr"><input asp-for="RecipeVM.Cuisine" /></td>
+        </tr>
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Instructions">Instructions:</label></td>
+            <td class="tdIngr"><input class="form-control" asp-for="RecipeVM.Instructions" /></td>
+        </tr>
+        <tr><td class="tdIngr">Ingredients</td></tr>
+        @for (int i = 0; i < 5; i++)
+        {
+            <tr>
+                <td class="tdIngr"><label asp-for="CollectLine[i].Ingredient.IngredientName"># @(i + 1)</label></td>
+                <td class="tdIngr"><input asp-for="CollectLine[i].Ingredient.IngredientName" /></td>
+                <td class="tdIngr"><label asp-for="CollectLine[i].Quantity">Quantity:</label></td>
+                <td class="tdIngr"><input asp-for="CollectLine[i].Quantity" /></td>
+                <td class="tdIngr"><label asp-for="CollectLine[i].Measure.MeasureDesc">Measure:</label></td>
+                <td class="tdIngr">
+                    <select input asp-for="CollectLine[i].Measure.MeasureDesc" class="tdIngr">
+                        <option>Select Measure</option>
+                        <option>Cup</option>
+                        <option>Tablespoon</option>
+                        <option>Teaspoon</option>
+                        <option>Pinch</option>
+                        <option>Gr</option>
+                        <option>Kg</option>
+                        <option>Unit</option>
+                        <option>Package</option>
+                        <option>Litre</option>
+                        <option>To taste</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdIngr"><input type="hidden" asp-for="CollectLine[i].IngredientLineID" /></td>
+                <td class="tdIngr"><input type="hidden" asp-for="CollectLine[i].Measure.MeasureID" /></td>
+                <td class="tdIngr"><input type="hidden" asp-for="CollectLine[i].RecipeID" /></td>
+            </tr>
+        }
+        <tr>
+            <td class="tdIngr"><button type="submit">Save</button></td>
+            <td><button type="button" asp-controller="Home" onclick="location.href='@Url.Action("")'">Cancel</button></td>
+        </tr>
+
+    </table>
+</form>
+<p style="color:red; font-size:small;">@TempData["error"]</p>

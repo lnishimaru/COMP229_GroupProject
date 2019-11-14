@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Little Saucepot</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/BasicStyles.css" />
+</head>
+<body>
+    <div id="allPage">
+        <header>
+            <div id="logo"><img src="@Url.Content("~/logo.png")" alt="Logo" /></div>
+            <div id="little">Little </div><div id="saucepot">&nbsp;Saucepot</div>
+            <p id="navBar">@Html.ActionLink("Home", "Index","Home") / @Html.ActionLink("New Recipe", "InsertPage","Base") /  @Html.ActionLink("Recipe List ", "DataPage", "Home")</p>
+        </header>
+        <div id="mainDiv">
+            @RenderBody()
+        </div>
+        <footer>
+            @Html.ActionLink("<Home>", "Index", "Home")
+            <p>&copy;&nbsp;Lilian Nishimaru de Souza - COMP229 - Fall 2019</p>
+        </footer>
+    </div>
+</body>
+</html>

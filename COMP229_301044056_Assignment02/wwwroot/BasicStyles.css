@@ -1,0 +1,258 @@
+﻿#allPage {
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Rubik', sans-serif;
+}
+
+header {
+    font-size: 30pt;
+    color: white;
+    width: 980px;
+    height: 100px;
+    background-color: #6A0000;
+    padding: 10px;
+}
+
+    header a {
+        color: white;
+        text-decoration: none;
+    }
+
+        header a:hover {
+            font-weight: bold;
+        }
+
+#little {
+    font-family: 'Ink Free';
+    font-size: 26pt;
+    float: left;
+    line-height: 100px;
+    vertical-align: middle;
+    padding-left: 15px;
+}
+
+#saucepot {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28pt;
+    float: left;
+    line-height: 100px;
+    vertical-align: middle;
+}
+
+#logo {
+    float: left;
+}
+
+#navBar {
+    font-size: 14pt;
+    color: white;
+    text-align: right;
+    line-height: 140px;
+    vertical-align: bottom;
+}
+
+#mainDiv {
+    padding: 10px;
+    background-color: white;
+    font-size: 20pt;
+    width: 980px;
+}
+
+footer {
+    font-size: small;
+    color: dimgrey;
+    width: 980px;
+    height: 100px;
+    background-color: lightgray;
+    padding: 10px;
+}
+    footer a {
+        color: dimgrey;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        font-weight: bold;
+    }
+.specials {
+    float: right;
+    width: 320px;
+    text-align: center;
+}
+
+.slides {
+    width: 300px;
+    height: 190px;
+    top: 140px;
+}
+
+/* main content */
+.photoIndex {
+    background: white;
+    width: 100%;
+    margin: 0;
+}
+
+.previous, .next {
+    color: white;
+    height: 190px;
+    width: 40px;
+    vertical-align: middle;
+}
+
+#fig0 {
+    float: left;
+    width: 30%;
+}
+
+#fig1 {
+    width: 30%;
+    float: left;
+    overflow: hidden;
+}
+
+#fig2 {
+    width: 30%;
+    float: left;
+    overflow: hidden;
+}
+
+.previous {
+    height: 190px;
+    float: left;
+    width: 40px;
+    background-color: lightgray;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+}
+
+.next {
+    height: 190px;
+    width: 40px;
+    background-color: lightgray;
+    float: left;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+}
+
+.previous:hover {
+    background-color: #7d96b2;
+}
+
+.next:hover {
+    background-color: #7d96b2;
+}
+
+.arrowPrevious {
+    width: 100%;
+    align-self: center;
+    transform: rotate(180deg);
+}
+
+.arrowNext {
+    width: 100%;
+    align-self: center;
+}
+
+#temporary {
+    text-align: center;
+    width: 100%;
+}
+.insertTable{
+    width: 450px;
+    margin-left: 30px;
+    margin-right: 150px;
+    border-collapse: collapse;
+}
+.comment {
+    width: 450px;
+    margin-left: 30px;
+    margin-right: 150px;
+    border-collapse: collapse;
+}
+#readTable {
+    width: 600px;
+    margin-left: 0;
+    margin-right: 50px;
+    border-collapse: collapse;
+}
+#readTable2 {
+    width: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-collapse: collapse;
+}
+.tdIngr {
+    padding-left: 15px;
+    text-align: right;
+    width: 162px;
+}
+.tdIngr2 {
+    padding-left: 15px;
+    text-align: left;
+}
+.tdRead {
+    padding-left: 0;
+    text-align: left;
+}
+.tdRead2 {
+    padding-left: 15px;
+    text-align: left;
+}
+.tdRead3 {
+    padding-left: 10px;
+    text-align: left;
+    width: 400px;
+    margin-right: 10px;
+}
+
+#dataPageTable {
+    padding: 10px;
+    margin-left: auto;
+    margin-right:auto;
+}
+.displayTd1 {
+    width: 240px;
+    text-decoration: none;
+    color: black;
+}
+.displayTd {
+    width: 110px;
+    text-align:center;
+}
+.editLink a {
+    text-decoration: none;
+    color: black;
+}
+.editLink a:visited {
+    color: black;
+}
+    .editLink a:hover {
+        color: darkcyan;
+        font-weight: bold;
+    }
+h3 {
+    color: darkcyan;
+}
+.tdReadBold {
+    font-weight: bold;
+}
+#photo {
+    float: right;
+    width: 100%;
+}
+.polaroid {
+    float: right;
+    width:300px;
+}
+div.polaroid {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+}
+
+div.container {
+    text-align: center;
+    padding: 10px 20px;
+}

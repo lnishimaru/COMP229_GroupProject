@@ -1,0 +1,31 @@
+﻿@model IEnumerable<COMP229_301044056_Assignment02.Models.Recipe>
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "_Layout";
+}
+
+<h3>Recipe List</h3>
+
+<div class="editLink">
+    <form asp-action="Delete" asp-controller="Base" method="post">
+        <table id="dataPageTable">
+            @foreach (Recipe p in Model)
+            {
+                <tr>
+                    <td class="displayTd1">@Html.ActionLink(@p.Name, "DisplayPage", "Home", new { recipeID = p.ID })</td>
+                    <td class="displayTd">
+                        <a asp-action="Edit" asp-controller="Base" asp-route-ID="@p.ID" >Edit</a>
+                    </td>
+                    <td class="displayTd">
+                        <a asp-action="UserPage" asp-controller="Base" asp-route-ID="@p.ID" >Comment</a>
+                    </td>
+                    <td><input type="hidden" name="ID" value="@p.ID" /></td>
+                    <td class="displayTd">
+                        <a asp-action="Delete" asp-controller="Base" asp-route-ID="@p.ID" >Delete</a>               
+                    </td>
+                </tr>
+            }
+        </table>
+    </form>
+    <p style="color:red; font-size:small;">@TempData["message"]</p>
+</div>

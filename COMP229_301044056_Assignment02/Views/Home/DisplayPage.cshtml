@@ -1,0 +1,8 @@
+﻿@model RecipeViewModel
+
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "_Layout";
+}
+
+@await Html.PartialAsync("RecipeDetails", Model)
