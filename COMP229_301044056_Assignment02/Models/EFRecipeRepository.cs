@@ -18,7 +18,7 @@ namespace COMP229_301044056_Assignment02.Models
 
         public void SaveRecipe(Recipe recipe)
         {
-            if (recipe.ID == 0)
+            if (recipe.RecipeID == 0)
             {
                 context.Recipes.Add(recipe);
                 System.Diagnostics.Debug.WriteLine("Adding Recipe");
@@ -26,26 +26,27 @@ namespace COMP229_301044056_Assignment02.Models
             else
             {
                 Recipe dbEntry = context.Recipes
-                .FirstOrDefault(p => p.ID == recipe.ID);
+                .FirstOrDefault(p => p.RecipeID == recipe.RecipeID);
                 if (dbEntry != null)
                 {
                     System.Diagnostics.Debug.WriteLine("Editing Recipe");
-                    dbEntry.ID = recipe.ID;
+                    dbEntry.RecipeID = recipe.RecipeID;
                     dbEntry.Name = recipe.Name;
                     dbEntry.Category = recipe.Category;
                     dbEntry.Cuisine = recipe.Cuisine;
                     dbEntry.Instructions = recipe.Instructions;
-                    dbEntry.Comments = recipe.Comments;
                     dbEntry.Photo = recipe.Photo;
+                    dbEntry.UserId = recipe.UserId;
+                    dbEntry.Date = DateTime.Today.ToString();
                     dbEntry.Lines = recipe.Lines;
-                } 
+                }
             }
             context.SaveChanges();
         }
         public Recipe DeleteRecipe(int recipeID)
         {
             Recipe dbEntry = context.Recipes
-            .FirstOrDefault(p => p.ID == recipeID);
+            .FirstOrDefault(p => p.RecipeID == recipeID);
             if (dbEntry != null)
             {
                 context.Recipes.Remove(dbEntry);

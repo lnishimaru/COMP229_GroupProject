@@ -128,7 +128,9 @@ namespace COMP229_301044056_Assignment02.Models
                     Category = "Appetizers",
                     Cuisine = "American",
                     Instructions = "Melt the butter in a large pot, and cook the onion, celery and squash for 5 minutes. Add the chicken stock to cover vegetables. Bring to a boil. Reduce heat to low, cover pot, and simmer 40 minutes, or until all vegetables are tender. Transfer the soup to a blender and blend until smooth.Return to pot and season with salt and pepper.",
-                    Photo = "~/AutumnSoup.jpg"
+                    Photo = "~/AutumnSoup.jpg",
+                    UserId = "Admin",
+                    Date = DateTime.Today.ToString()
                 },
                 new Recipe
                 {
@@ -136,14 +138,18 @@ namespace COMP229_301044056_Assignment02.Models
                     Category = "Desserts",
                     Cuisine = "Italian",
                     Instructions = "Mix the and gelatin powder in a bowl. Set aside. In a saucepan, stir together the heavy cream and sugar, and set over medium heat. Bring to a full boil, watching carefully, as the cream will quickly rise to the top of the pan. Pour the gelatin and milk into the cream, stirring until completely dissolved. Cook for one minute, stirring constantly. Remove from heat, stir in the vanilla and pour into six individual ramekin dishes. Cool the ramekins uncovered at room temperature. Refrigerate for at least 4 hours",
-                    Photo = "~/PannaCotta.jpg"
+                    Photo = "~/PannaCotta.jpg",
+                    UserId = "Admin",
+                    Date = DateTime.Today.ToString()
                 }, new Recipe
                 {
                     Name = "Beef Taco",
                     Category = "Entrees",
                     Cuisine = "Mexican",
                     Instructions = "Grill the beef in a skillet over medium-high heat. Meanwhile, wrap the flour tortillas in foil and warm in the oven for 20 to 25 minutes. Fill the tortilas with beef, tomatos, grated cheese and tomatos.",
-                    Photo = "~/BeefTaco.jpg"
+                    Photo = "~/BeefTaco.jpg",
+                    UserId = "Admin",
+                    Date = DateTime.Today.ToString()
                 });
                 context.SaveChanges();
             }

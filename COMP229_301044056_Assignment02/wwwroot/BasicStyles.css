@@ -57,8 +57,12 @@ header {
     background-color: white;
     font-size: 20pt;
     width: 980px;
+    height:100%;
 }
-
+#foot {
+    position:relative;
+    top:200px;
+}
 footer {
     font-size: small;
     color: dimgrey;
@@ -66,6 +70,7 @@ footer {
     height: 100px;
     background-color: lightgray;
     padding: 10px;
+    position:relative;
 }
     footer a {
         color: dimgrey;
@@ -75,90 +80,69 @@ footer {
     footer a:hover {
         font-weight: bold;
     }
+.indx{
+    width: 100%;
+    overflow:hidden;
+}
 .specials {
-    float: right;
     width: 320px;
     text-align: center;
+    overflow:hidden;
+    float:left;
+}
+#spc1 {
+    float:left;
 }
 
+.specials a {
+    text-decoration: none;
+    color: black;
+}
+
+    .specials a:visited {
+        color: black;
+    }
+
+    .specials a:hover {
+        color: darkcyan;
+        font-weight: bold;
+    }
 .slides {
     width: 300px;
     height: 190px;
     top: 140px;
+    float: left;
+    overflow: hidden;
 }
+    .slides :first-child {
+        padding-left: 25px;
+    }
 
 /* main content */
+
 .photoIndex {
     background: white;
     width: 100%;
-    margin: 0;
-}
-
-.previous, .next {
-    color: white;
-    height: 190px;
-    width: 40px;
-    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    position:absolute;
 }
 
 #fig0 {
     float: left;
-    width: 30%;
+    padding-left: 25px;
 }
 
 #fig1 {
-    width: 30%;
     float: left;
     overflow: hidden;
 }
 
 #fig2 {
-    width: 30%;
     float: left;
     overflow: hidden;
 }
 
-.previous {
-    height: 190px;
-    float: left;
-    width: 40px;
-    background-color: lightgray;
-    display: flex;
-    transition: all 0.2s ease-in-out;
-}
-
-.next {
-    height: 190px;
-    width: 40px;
-    background-color: lightgray;
-    float: left;
-    display: flex;
-    transition: all 0.2s ease-in-out;
-}
-
-.previous:hover {
-    background-color: #7d96b2;
-}
-
-.next:hover {
-    background-color: #7d96b2;
-}
-
-.arrowPrevious {
-    width: 100%;
-    align-self: center;
-    transform: rotate(180deg);
-}
-
-.arrowNext {
-    width: 100%;
-    align-self: center;
-}
-
-#temporary {
-    text-align: center;
-    width: 100%;
-}
 .insertTable{
     width: 450px;
     margin-left: 30px;

@@ -12,16 +12,16 @@
             @foreach (Recipe p in Model)
             {
                 <tr>
-                    <td class="displayTd1">@Html.ActionLink(@p.Name, "DisplayPage", "Home", new { recipeID = p.ID })</td>
+                    <td class="displayTd1">@Html.ActionLink(@p.Name, "DisplayPage", "Home", new { RecipeID = p.RecipeID })</td>
                     <td class="displayTd">
-                        <a asp-action="Edit" asp-controller="Base" asp-route-ID="@p.ID" >Edit</a>
+                        <a asp-action="Edit" asp-controller="Base" asp-route-RecipeID="@p.RecipeID" >Edit</a>
                     </td>
                     <td class="displayTd">
-                        <a asp-action="UserPage" asp-controller="Base" asp-route-ID="@p.ID" >Comment</a>
+                        <a asp-action="UserPage" asp-controller="Base" asp-route-RecipeID="@p.RecipeID" >Comment</a>
                     </td>
-                    <td><input type="hidden" name="ID" value="@p.ID" /></td>
+                    <td><input type="hidden" name="RecipeID" value="@p.RecipeID"  /></td>
                     <td class="displayTd">
-                        <a asp-action="Delete" asp-controller="Base" asp-route-ID="@p.ID" >Delete</a>               
+                        <a asp-action="Delete" asp-controller="Base" asp-route-RecipeID="@p.RecipeID" >Delete</a>               
                     </td>
                 </tr>
             }

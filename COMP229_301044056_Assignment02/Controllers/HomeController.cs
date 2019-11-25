@@ -14,13 +14,16 @@ namespace COMP229_301044056_Assignment02.Controllers
         private IRecipeRepository recipeRepo;
         private IIngredientLineRepository lineRepo;
         private IMeasureRepository measureRepo;
+        private IRecipeCommentRepository commentRepo;
 
-        public HomeController(IIngredientRepository repoService, IRecipeRepository repoRecipe, IIngredientLineRepository repoLine, IMeasureRepository repoMeasure)
+        public HomeController(IIngredientRepository repoService, IRecipeRepository repoRecipe, IIngredientLineRepository repoLine, IMeasureRepository repoMeasure,
+            IRecipeCommentRepository repoComment)
         {
             repository = repoService;
             recipeRepo = repoRecipe;
             lineRepo = repoLine;
             measureRepo = repoMeasure;
+            commentRepo = repoComment;
         }
         public int FindIngredient(string ingredientName)
         {
@@ -66,26 +69,26 @@ namespace COMP229_301044056_Assignment02.Controllers
 
             return result;
         }
-        public ViewResult DisplayPage(int recipeID)
+        public ViewResult DisplayPage(int RecipeID)
         {
             RecipeViewModel recipeView = new RecipeViewModel();
             recipeView.Line = new List<IngredientLineDetail>();
             Measure measure = new Measure();
+            recipeView.Comments = new List<RecipeComment>();
 
             var query = from p in recipeRepo.Recipes
-                        where p.ID == recipeID
-                        orderby p.ID
+                        where p.RecipeID == RecipeID
+                        orderby p.RecipeID
                         select p;
 
             foreach (var recipe in query)
             {
                 recipeView.Name = recipe.Name;
                 recipeView.Instructions = recipe.Instructions;
-                recipeView.ID = recipe.ID;
+                recipeView.RecipeID = recipe.RecipeID;
                 recipeView.Category = recipe.Category;
                 recipeView.Cuisine = recipe.Cuisine;
-                recipeView.Comments = recipe.Comments;
-                
+
                 if (recipe.Photo == null)
                 {
                     recipeView.Photo = "~/default.jpg";
@@ -98,7 +101,7 @@ namespace COMP229_301044056_Assignment02.Controllers
 
                 System.Diagnostics.Debug.WriteLine(recipe.Name);
                 var query2 = from q in lineRepo.Lines
-                             where q.RecipeID == recipe.ID
+                             where q.RecipeID == recipe.RecipeID
                              orderby q.IngredientLineID
                              select q;
 
@@ -135,16 +138,48 @@ namespace COMP229_301044056_Assignment02.Controllers
                         });
                     }
                 }
+                var query5 = from s in commentRepo.RecipeComments
+                             where s.RecipeID == RecipeID
+                             orderby s.RecipeID
+                             select s;
+                foreach (RecipeComment s in query5 )
+                {
+                    recipeView.Comments.Add(s);
+                }
             }
             return View(recipeView);
         }
+        //public ViewResult Index() =>
+        //    View(recipeRepo.Recipes.Where(o => o.RecipeID > 0).OrderByDescending(o => o.Date).Take(3));
         public ViewResult Index()
         {
-            return View();
+            IndexViewModel model = new IndexViewModel();
+            model.Recipes = new List<Recipe>();
+            model.Count = 0;
+            model.FigName = "";
+
+            var query = (from p in recipeRepo.Recipes
+                        where p.RecipeID > 0
+                        orderby p.Date descending
+                        select p).Take(3);
+
+            foreach (var recipe in query)
+            {
+                model.Recipes.Add(new Recipe
+                {
+                    Name = recipe.Name,
+                    Instructions = recipe.Instructions,
+                    RecipeID = recipe.RecipeID,
+                    Category = recipe.Category,
+                    Cuisine = recipe.Cuisine,
+                    Photo = recipe.Photo
+                });
+            }
+            return View("Index", model);
         }
 
-        public ViewResult DataPage() =>
-            View(recipeRepo.Recipes.Where(o => o.ID > 0));
+            public ViewResult DataPage() =>
+            View(recipeRepo.Recipes.Where(o => o.RecipeID > 0));
        
     }
 }

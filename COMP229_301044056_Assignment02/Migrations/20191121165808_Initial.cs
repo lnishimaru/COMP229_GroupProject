@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace COMP229_301044056_Assignment02.Migrations
@@ -34,21 +35,38 @@ namespace COMP229_301044056_Assignment02.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RecipeComments",
+                columns: table => new
+                {
+                    RecipeCommentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RecipeID = table.Column<int>(nullable: false),
+                    Comments = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
+                    CommentDateTime = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecipeComments", x => x.RecipeCommentId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Recipes",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    RecipeID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Category = table.Column<string>(nullable: true),
                     Cuisine = table.Column<string>(nullable: true),
                     Instructions = table.Column<string>(nullable: true),
-                    Comments = table.Column<string>(nullable: true),
-                    Photo = table.Column<string>(nullable: true)
+                    Photo = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
+                    Date = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recipes", x => x.ID);
+                    table.PrimaryKey("PK_Recipes", x => x.RecipeID);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,7 +87,7 @@ namespace COMP229_301044056_Assignment02.Migrations
                         name: "FK_IngredientLine_Recipes_RecipeID",
                         column: x => x.RecipeID,
                         principalTable: "Recipes",
-                        principalColumn: "ID",
+                        principalColumn: "RecipeID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -89,6 +107,9 @@ namespace COMP229_301044056_Assignment02.Migrations
 
             migrationBuilder.DropTable(
                 name: "Measures");
+
+            migrationBuilder.DropTable(
+                name: "RecipeComments");
 
             migrationBuilder.DropTable(
                 name: "Recipes");

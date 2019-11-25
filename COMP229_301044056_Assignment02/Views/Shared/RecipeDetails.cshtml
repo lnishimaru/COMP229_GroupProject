@@ -22,10 +22,11 @@
     <p class="tdReadBold">Instructions:</p>
     <p>@Model.Instructions</p>
 </div>
-@if (Model.Comments != null && Model.Comments != "")
-{
+<div>
     <p class="tdReadBold">Comments:</p>
-    <p> @Model.Comments</p>
-}
-
+    @foreach (RecipeComment c in Model.Comments)
+    {
+        <p> @c.Comments , @c.UserId</p>
+    }
+</div>
 

@@ -1,31 +1,25 @@
-﻿@model IEnumerable<COMP229_301044056_Assignment02.Models.Recipe>
-
+﻿@model IndexViewModel
 <h3>Today's Specials</h3>
-<table>
-    <tbody>
-        <tr>
-            <td class="specials">Panna Cotta</td>
-            <td class="specials">Beef Taco</td>
-            <td class="specials">Autumn Soup</td>
-        </tr>
-    </tbody>
-</table>
 
-<div class="photoIndex">
-    <div class="previous">
-        <img src="~/arrow.png" class="arrowPrevious" />
+
+<div class="indx">
+    @foreach (Recipe x in Model.Recipes)
+    {
+        Model.FigName = "spc" + Model.Count;
+        <div class="specials" id="@Model.FigName">
+            @Html.ActionLink(@x.Name, "DisplayPage", "Home", new { RecipeID = x.RecipeID })
+        </div>
+        Model.Count = Model.Count + 1;
+    }
     </div>
-    <div id="fig0" class="photos">
-        <img src="~/AutumnSoup.jpg" class="slides" id="img0" />
+    @{Model.Count = 0; }
+    <div class="photoIndex">
+        @foreach (Recipe x in Model.Recipes)
+        {
+            Model.FigName = "fig" + Model.Count;
+            <div id="@Model.FigName"><a href="@Url.Action("DisplayPage","Home", new { RecipeID = x.RecipeID })"><img src="@Url.Content(@x.Photo)" class="slides" /></a></div>
+            Model.Count = Model.Count + 1;
+        }
     </div>
-    <div id="fig1">
-        <img src="~/BeefTaco.jpg" class="slides" id="img1" />
-    </div>
-    <div id="fig2">
-        <img src="~/PannaCotta.jpg" class="slides" id="img2" />
-    </div>
-    <div class="next">
-        <img src="~/arrow.png" class="arrowNext" />
-    </div>
-</div>
-<p id="temporary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To navigate, select your option from the menu on top</p>
+
+

@@ -17,10 +17,12 @@
         <div id="mainDiv">
             @RenderBody()
         </div>
-        <footer>
-            @Html.ActionLink("<Home>", "Index", "Home")
-            <p>&copy;&nbsp;Lilian Nishimaru de Souza - COMP229 - Fall 2019</p>
-        </footer>
+        <div id="foot">
+            <footer>
+                @Html.ActionLink("<Home>", "Index", "Home")
+                <p>&copy;&nbsp;Lilian Nishimaru de Souza - COMP229 - Fall 2019</p>
+            </footer>
+        </div>
     </div>
 </body>
 </html>

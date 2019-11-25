@@ -15,6 +15,8 @@ namespace COMP229_301044056_Assignment02.Models
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<IngredientLine> IngredientLine { get; set; }
+        public DbSet<RecipeComment> RecipeComments { get; set; }
         public DbSet<Measure> Measures { get; set; }
+
     }
 }

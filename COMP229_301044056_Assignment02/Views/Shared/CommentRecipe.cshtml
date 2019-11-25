@@ -1,11 +1,11 @@
 ﻿@model InsertPageViewModel
 
-<form id="form1" asp-action="InsertPage" asp-controller="Base" method="post">
+<form id="form1" asp-action="InsertComment" asp-controller="Base" method="post">
     <table class="insertTable">
         <tr>
             <td class="tdIngr"><label asp-for="RecipeVM.Name">Recipe:</label></td>
             <td class="tdIngr"><input asp-for="RecipeVM.Name" readonly="readonly" /></td>
-            <td class="tdIngr"><input type="hidden" asp-for="RecipeVM.ID" /></td>
+            <td class="tdIngr"><input type="hidden" asp-for="RecipeVM.RecipeID" /></td>
         </tr>
         <tr>
             <td class="tdIngr"><label asp-for="RecipeVM.Category">Category:</label></td>
@@ -43,7 +43,9 @@
     <table class="comment">
         <tr>
             <td class="tdIngr"><label asp-for="Comments">Comments:</label></td>
+            <td class="tdIngr"><input class="form-control" asp-for="RecipeCommentId" type="hidden" /></td>
             <td class="tdIngr"><input class="form-control" asp-for="Comments" style="width:400px; height:50px;" /></td>
+            <td class="tdIngr"><input class="form-control" asp-for="UserId" type="hidden" /></td>
         </tr>
     </table>
         <table class="insertTable">
