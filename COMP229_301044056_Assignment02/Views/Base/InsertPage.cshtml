@@ -1,0 +1,8 @@
+﻿@model InsertPageViewModel
+@{
+    ViewBag.Title = "Recipes";
+    ViewData["Title"] = "Details";
+}
+
+<h3>Add new recipe:</h3>
+@await Html.PartialAsync("AddRecipe", Model)

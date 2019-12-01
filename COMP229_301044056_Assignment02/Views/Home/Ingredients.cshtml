@@ -1,0 +1,11 @@
+﻿@model RecipeViewModel
+
+<p>@Model.Name - @Model.Category - @Model.Cuisine</p>
+<p>Ingredients:</p>
+@foreach (IngredientLineDetail x in Model.Line)
+{
+    <p style="font-size:small">@x.Ingredient.IngredientName - @x.Quantity @x.Measure.MeasureDesc </p>
+}
+
+<p>Instructions:</p>
+<p>@Model.Instructions</p>

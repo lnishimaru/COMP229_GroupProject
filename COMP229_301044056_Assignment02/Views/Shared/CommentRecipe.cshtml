@@ -1,0 +1,59 @@
+﻿@model InsertPageViewModel
+
+<h3>Comment recipe:</h3>
+
+<form id="form1" asp-action="InsertComment" asp-controller="Base" method="post">
+    <table class="insertTable">
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Name">Recipe:</label></td>
+            <td class="tdIngr"><input asp-for="RecipeVM.Name" readonly="readonly" /></td>
+            <td class="tdIngr"><input type="hidden" asp-for="RecipeVM.RecipeID" /></td>
+        </tr>
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Category">Category:</label></td>
+            <td class="tdIngr"><input asp-for="RecipeVM.Category" readonly="readonly" /></td>
+        </tr>
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Cuisine">Cuisine:</label></td>
+            <td class="tdIngr"><input asp-for="RecipeVM.Cuisine" readonly="readonly" /></td>
+        </tr>
+        <tr>
+            <td class="tdIngr"><label asp-for="RecipeVM.Instructions">Instructions:</label></td>
+            <td class="tdIngr"><input class="form-control" asp-for="RecipeVM.Instructions" readonly="readonly" /></td>
+        </tr>
+        <tr><td class="tdIngr">Ingredients</td></tr>
+
+        @for (int i = 0; i < Model.CollectLine.Count; i++)
+        {
+
+            <tr>
+                <td class="tdIngr"><label asp-for="CollectLine[i].Ingredient.IngredientName"># @(i + 1)</label></td>
+                <td class="tdIngr"><input asp-for="CollectLine[i].Ingredient.IngredientName" readonly="readonly" /></td>
+                <td class="tdIngr"><label asp-for="CollectLine[i].Quantity">Quantity:</label></td>
+                <td class="tdIngr"><input asp-for="CollectLine[i].Quantity" readonly="readonly" /></td>
+                <td class="tdIngr"><label asp-for="CollectLine[i].Measure.MeasureDesc">Measure:</label></td>
+                <td class="tdIngr"><input asp-for="CollectLine[i].Measure.MeasureDesc" readonly="readonly" /></td>
+            </tr>
+            <tr>
+                <td class="tdIngr"><input asp-for="CollectLine[i].IngredientLineID" type="hidden" /></td>
+                <td class="tdIngr"><input asp-for="CollectLine[i].Measure.MeasureID" type="hidden" /></td>
+                <td class="tdIngr"><input asp-for="CollectLine[i].RecipeID" type="hidden" /></td>
+            </tr>
+        }
+
+    </table>
+    <table class="comment">
+        <tr>
+            <td class="tdIngr"><label asp-for="Comments">Comments:</label></td>
+            <td class="tdIngr"><input class="form-control" asp-for="RecipeCommentId" type="hidden" /></td>
+            <td class="tdIngr"><input class="form-control" asp-for="Comments" style="width:400px; height:50px; text-align:right" /></td>
+            <td class="tdIngr"><input class="form-control" asp-for="UserId" type="hidden" /></td>
+        </tr>
+    </table>
+        <table class="insertTable">
+            <tr>
+                <td class="tdIngr"><button type="submit">Save</button></td>
+                <td><button type="button" onclick="location.href='@Url.Action("DataPage","Home")'">Cancel</button></td>
+            </tr>
+            </table>
+</form>

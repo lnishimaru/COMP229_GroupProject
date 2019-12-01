@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Little Saucepot</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/BasicStyles.css" />
+</head>
+<body>
+    <div id="allPage">
+        <header>
+            <div id="logo"><img src="@Url.Content("~/logo.png")" alt="Logo" id="logoImg" /></div>
+            <div id="little">Little </div><div id="saucepot">&nbsp;Saucepot</div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h6 class="font-italic float-sm-right align-content-center">Hello, @User.Identity.Name &nbsp;&nbsp;<a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Logout">Logout</a></h6>
+                <div id="navBar">@Html.ActionLink("Home", "Index", "Home") / @Html.ActionLink("New Recipe", "InsertPage", "Base") /  @Html.ActionLink("Recipe List ", "DataPage", "Home")</div>
+            }
+            else
+            {
+                <a class="btn btn-sm btn-primary float-sm-right" asp-controller="Account" asp-action="LogIn">Log in</a>
+                <div id="navBar">@Html.ActionLink("Home", "Index", "Home") / @Html.ActionLink("New Recipe", "InsertPage", "Base") /  @Html.ActionLink("Recipe List ", "DataPage", "Home")</div>
+
+            }
+        </header>
+        <div id="mainDiv">
+            @RenderBody()
+        </div>
+        <div id="foot2">
+            <footer>
+                @Html.ActionLink("<Home>", "Index", "Home")
+                <p>&copy;&nbsp;Lilian Nishimaru de Souza - COMP229 - Fall 2019</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

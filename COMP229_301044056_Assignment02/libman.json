@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/twitter-bootstrap",
+      "files": [
+        "css/bootstrap-grid.css",
+        "css/bootstrap-grid.min.css",
+        "css/bootstrap-reboot.css",
+        "css/bootstrap.css",
+        "css/bootstrap.min.css",
+        "js/bootstrap.bundle.js",
+        "js/bootstrap.min.js"
+      ]
+    },
+    {
+      "library": "font-awesome@5.11.2",
+      "destination": "wwwroot/font-awesome",
+      "files": [
+        "css/all.css",
+        "css/fontawesome.css",
+        "css/brands.css",
+        "js/all.js",
+        "css/regular.css",
+        "css/solid.css"
+      ]
+    }
+  ]
+}

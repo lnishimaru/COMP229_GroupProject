@@ -1,0 +1,27 @@
+﻿@model IndexViewModel
+@{
+    Layout = "_Layout_Index";
+}
+<div id="indexDiv">
+    <h3>Today's Specials</h3>
+
+    <div class="indx">
+        @foreach (Recipe x in Model.Recipes)
+        {
+            Model.FigName = "spc" + Model.Count;
+            <div class="specials" id="@Model.FigName">
+                @Html.ActionLink(@x.Name, "DisplayPage", "Home", new { RecipeID = x.RecipeID })
+            </div>
+            Model.Count = Model.Count + 1;
+        }
+    </div>
+    @{Model.Count = 0; }
+    <div class="photoIndex">
+        @foreach (Recipe x in Model.Recipes)
+        {
+            Model.FigName = "fig" + Model.Count;
+            <div id="@Model.FigName"><a href="@Url.Action("DisplayPage","Home", new { RecipeID = x.RecipeID })"><img src="@Url.Content(@x.Photo)" class="slides" /></a></div>
+            Model.Count = Model.Count + 1;
+        }
+    </div>
+</div>

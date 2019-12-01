@@ -1,0 +1,42 @@
+﻿@model RecipeViewModel
+
+
+<div>
+    <h3>@Model.Name</h3>
+    <div class="polaroid">
+        <img src="@Url.Content(@Model.Photo)" id="photo" />
+        <div class="container">
+            <h6>@Model.Name</h6>
+        </div>
+    </div>
+    <table id="readTable">
+        <tr><td class="tdRead">Category: @Model.Category</td></tr>
+        <tr><td class="tdRead">Cuisine: @Model.Cuisine</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td class="tdReadBold">Ingredients:</td></tr>
+        @foreach (IngredientLineDetail x in Model.Line)
+        {
+            <tr><td class="tdRead2">@x.Ingredient.IngredientName </td><td class="tdIngr2"> @x.Quantity @x.Measure.MeasureDesc </td></tr>
+        }
+    </table>
+    <p class="tdReadBold">Instructions:</p>
+    <p>@Model.Instructions</p>
+</div>
+<div>
+    <p class="tdReadBold">Comments:</p>
+    @foreach (RecipeComment c in Model.Comments)
+    {
+    
+            <div class="col px-md-5">
+                <div class="p-3 border bg-light">
+                    @c.Comments<br /><h5>by: @c.UserId</h5><h5>@c.CommentDateTime</h5>
+                    @if (User.Identity.Name == c.UserId)
+                    {
+                        <a asp-controller="Base" asp-action="DeleteCommnet" asp-route-id="@c.RecipeCommentId" class="btn btn-danger">Delete</a>
+                    }
+
+                </div>
+            </div><br />   
+    }
+</div>
+
